@@ -10,7 +10,18 @@ Include this package via Composer:
 composer require masrodie/codeigniter4-queue
 ```
 
-## Setup services eloquent
+## Setup services queue
+
+Add redis config in .env
+```
+REDIS_HOST=localhost
+REDIS_CLIENT=predis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+REDIS_SCHEME=tcp
+REDIS_DB=0
+```
+
 Open App\Controllers\BaseController.php
 
 add ` $this->queue = service('queue');` on function initController
@@ -82,6 +93,11 @@ class Home extends BaseController
 	}
 }
 
+```
+
+### Run queue worker
+```sh
+php spark queue:work
 ```
 
 ## More info usefull link docs laravel
